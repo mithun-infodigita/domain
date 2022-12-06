@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Domain\Mail\Models\Broadcast\Broadcast;
-use Domain\Mail\Models\Sequence\SequenceMail;
+// use Domain\Mail\Models\Broadcast\Broadcast;
+// use Domain\Mail\Models\Sequence\SequenceMail;
 use Exception;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
