@@ -1367,3 +1367,7 @@
 [stacktrace]
 #0 {main}
 "} 
+[2022-12-06 12:19:14] local.ERROR: Trait "Domain\Mail\Models\Concerns\HasPerformance" not found {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Trait \"Domain\\Mail\\Models\\Concerns\\HasPerformance\" not found at /home/mithun/Desktop/6. MailTool Source Code/src/Domain/Mail/Models/Sequence/Sequence.php:19)
+[stacktrace]
+#0 {main}
+"} 
