@@ -2,8 +2,12 @@
 
 namespace Domain\Subscriber\DataTransferObjects;
 
+use Illuminate\Http\Request;
 use Spatie\LaravelData\Data;
 use Illuminate\Validation\Rule;
+use Domain\Subscriber\Models\Tag;
+use Domain\Subscriber\Models\Form;
+use Spatie\LaravelData\DataCollection;
 
 class SubscriberData extends Data {
     
@@ -17,6 +21,8 @@ class SubscriberData extends Data {
         public readonly ?FormData $form, 
     ) {}
 
+
+
     public static function rules(): array
     {
         return [
@@ -26,5 +32,14 @@ class SubscriberData extends Data {
                 'tag_ids'       =>  ['nullable', 'sometimes', 'array'],
                 'form_id'       =>  ['nullable', 'sometimes', 'exists:forms,id']
         ];
+    }
+
+
+    public static function fromRequest(Request $request): self{
+        return self::from([
+            ...$request->all(),
+            'tags'  =>  TagData::collection(Tag::whereIn('id', $request->collect('tag_ids'))->get()),
+            'form'  =>  FormData::from(Form::findOrNew($request->form_id))
+        ]);
     }
 }
